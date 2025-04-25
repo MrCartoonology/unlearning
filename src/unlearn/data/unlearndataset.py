@@ -3,10 +3,10 @@ import re
 from typing import List, Tuple
 import torch
 from torch.utils.data import Dataset
-
 from transformers import (
     AutoTokenizer,
 )
+from unlearn.setup import safe_open
 
 
 def write_unlearn_chunks(cfg: dict) -> None:
@@ -34,7 +34,7 @@ def write_unlearn_chunks(cfg: dict) -> None:
     ]
     out = chunk_delim.join(chunks)
 
-    with open(unlearn_output_fname, "w") as f:
+    with safe_open(unlearn_output_fname, "w") as f:
         f.write(out)
     print(
         f"Wrote {len(chunks)} chunks with case-insensitive {unlearn_word} to {unlearn_output_fname}"

@@ -54,6 +54,13 @@ def replace_root_in_dict(d: dict, root_path: str) -> dict:
         return d
 
 
+def safe_open(file_path, mode='w'):
+    """Ensure parent directory exists, then open the file."""
+    path = Path(file_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return open(path, mode)
+
+
 class RunTracker(object):
     def __init__(self, cfg: dict):
         if cfg['drop_into_debugger_on_error']:
@@ -85,7 +92,7 @@ def load_tokenizer_and_base_model(
         tokenizer.pad_token = tokenizer.eos_token
     model = AutoModelForCausalLM.from_pretrained(cfg["model_name"])
     model = model.to("cpu")
-    print("Model device:", next(model.parameters()).device)
+    print("Base model device:", next(model.parameters()).device)
     return tokenizer, model
 
 
@@ -117,5 +124,5 @@ def load_peft_model(model: PreTrainedModel) -> PreTrainedModel:
     )
     model = get_peft_model(model, peft_config)
     model = model.to('cpu')
-    print("Model device:", next(model.parameters()).device)
+    print("Fine tune model device:", next(model.parameters()).device)
     return model

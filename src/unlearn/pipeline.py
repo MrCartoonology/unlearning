@@ -5,9 +5,8 @@ import unlearn.setup as setup
 import unlearn.trainers as trainers
 import unlearn.eval as eval
 
-CFG_FNAME = (
-    "/Users/davidschneider/code/mrcartoonology/unlearning/src/unlearn/config.yaml"
-)
+
+CFG_FNAME = setup.find_root() / "config/config.yaml"
 
 
 def run(cfg_fname=CFG_FNAME):

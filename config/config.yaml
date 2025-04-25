@@ -18,19 +18,19 @@ orthgrad_unlearn_trainer:
   enable_proj: True
   num_retain_per_grad: 4
   retain_dim: 8
-  retain_recompute_freq: 10
+  retain_recompute_freq: 3
 
 training_args:
   output_dir: "{{root}}/training_output"
 #  num_train_epochs: 1
-  max_steps: 5
+  max_steps: 15
   per_device_train_batch_size: 2
   logging_dir: "{{root}}/training_logs"
-  logging_steps: 5
+  logging_steps: 1
   save_steps: 5000
   save_total_limit: 1
   max_grad_norm: 1.0
-  learning_rate: 5.0e-4
+  learning_rate: 5.0e-3
   label_names:
     - "labels"
   optim: "adamw_torch"

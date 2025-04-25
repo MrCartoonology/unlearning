@@ -3,6 +3,7 @@ from transformers import Trainer
 from torch.utils.data import Dataset
 import random
 import torch
+from torch.utils.tensorboard import SummaryWriter
 
 from unlearn.setup import RunTracker
 
@@ -77,10 +78,16 @@ class OrthoGradUnlearnTrainer(Trainer):
             sample_grads = [get_flat_grad(model, sample) for sample in samples]
             grads.append(torch.stack(sample_grads).mean(dim=0))
 
-        print("retrain gradient norms: ", ', '.join(['%.2f' % grad.norm() for grad in grads]))
+        retain_grad_norms = [grad.norm() for grad in grads]
+        med_grad_norm = torch.median(torch.tensor(retain_grad_norms))
 
-        grads = [grad / grad.norm() for grad in grads]
-        print("condition number of normalized gradients: ", compute_condition_number(grads))
+        grads = [grad / norm for grad, norm in zip(grads, retain_grad_norms)]
+        cond_num = compute_condition_number(grads)
+
+        if not hasattr(self, 'tb_writer'):
+            self.tb_writer = SummaryWriter(log_dir=self.args.logging_dir)
+        self.tb_writer.add_scalar("retain_grads/cond_num", cond_num, self.state.global_step)
+        self.tb_writer.add_scalar("retain_grads/median_norm", med_grad_norm, self.state.global_step)
         model.train()
         return grads
 

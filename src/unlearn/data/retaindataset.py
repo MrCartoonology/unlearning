@@ -6,6 +6,7 @@ from torch.utils.data import Dataset
 from transformers import (
     AutoTokenizer,
 )
+from unlearn.setup import safe_open
 
 
 def create_random_chunks(cfg: dict) -> None:
@@ -42,7 +43,7 @@ def create_random_chunks(cfg: dict) -> None:
         chunks.append(chunk)
 
     # Write chunks to the output file, separated by "--"
-    with open(output_file, "w") as out_f:
+    with safe_open(output_file, "w") as out_f:
         out_f.write(chunk_split.join(chunks))
     print(
         f"Wrote {len(chunks)} chunks to {output_file} with {lines_per_chunk} lines each, avoiding {avoid_word}"
