@@ -1,4 +1,4 @@
-from typing import List, Tuple  
+from typing import List, Tuple
 from transformers import Trainer
 from torch.utils.data import Dataset
 import random
@@ -64,18 +64,23 @@ class OrthoGradUnlearnTrainer(Trainer):
             len(indicies) >= self.retain_dim * self.num_retain_per_grad
         ), "Not enough samples in retain dataset"
         indicies_chunks = [
-            indicies[start: start + self.num_retain_per_grad]
+            indicies[start : start + self.num_retain_per_grad]
             for start in range(0, len(indicies), self.num_retain_per_grad)
         ]
 
         model = self.model
         model.eval()
         grads = []
+        losses = []
 
         while len(grads) < self.retain_dim:
             grad_indices = indicies_chunks.pop()
             samples = [self.retain_dataset[idx] for idx in grad_indices]
-            sample_grads = [get_flat_grad(model, sample) for sample in samples]
+            samples_loss_grad = [
+                get_loss_and_flat_grad(model, sample) for sample in samples
+            ]
+            losses.extend([loss for loss, _ in samples_loss_grad])
+            sample_grads = [grad for _, grad in samples_loss_grad]
             grads.append(torch.stack(sample_grads).mean(dim=0))
 
         retain_grad_norms = [grad.norm() for grad in grads]
@@ -84,10 +89,17 @@ class OrthoGradUnlearnTrainer(Trainer):
         grads = [grad / norm for grad, norm in zip(grads, retain_grad_norms)]
         cond_num = compute_condition_number(grads)
 
-        if not hasattr(self, 'tb_writer'):
+        if not hasattr(self, "tb_writer"):
             self.tb_writer = SummaryWriter(log_dir=self.args.logging_dir)
-        self.tb_writer.add_scalar("retain_grads/cond_num", cond_num, self.state.global_step)
-        self.tb_writer.add_scalar("retain_grads/median_norm", med_grad_norm, self.state.global_step)
+        self.tb_writer.add_scalar(
+            "retain/grads_cond_num", cond_num, self.state.global_step
+        )
+        self.tb_writer.add_scalar(
+            "retain/grads_median_norm", med_grad_norm, self.state.global_step
+        )
+        self.tb_writer.add_scalar(
+            "retain/loss", torch.mean(torch.tensor(losses)), self.state.global_step
+        )
         model.train()
         return grads
 
@@ -101,7 +113,7 @@ class OrthoGradUnlearnTrainer(Trainer):
 
         if not self.enable_proj:
             return Trainer.training_step(self, model, inputs, num_items_in_batch)
-        
+
         inputs = self._prepare_inputs(inputs)
 
         if (
@@ -125,8 +137,20 @@ class OrthoGradUnlearnTrainer(Trainer):
             if param.grad is not None
         ]
 
+        pre_proj_norm = torch.norm(torch.cat([g.view(-1) for g in model_grads]))
+
         # Apply the orthogonal projection to the gradients
         apply_orthogonal_projection(model_grads, self.retain_gradients)
+
+        post_proj_norm = torch.norm(torch.cat([g.view(-1) for g in model_grads]))
+        if not hasattr(self, "tb_writer"):
+            self.tb_writer = SummaryWriter(log_dir=self.args.logging_dir)
+        percentage_change = 100.0 * (pre_proj_norm - post_proj_norm) / pre_proj_norm
+        self.tb_writer.add_scalar(
+            "retain_grads/projection_percentage_change",
+            percentage_change.item(),
+            self.state.global_step,
+        )
 
         # Now copy projected gradients back to model parameters
         idx = 0
@@ -138,7 +162,7 @@ class OrthoGradUnlearnTrainer(Trainer):
         return loss.detach()
 
 
-def get_flat_grad(model, sample):
+def get_loss_and_flat_grad(model, sample):
     sample = {
         k: v.unsqueeze(0).to(model.device)
         for k, v in sample.items()
@@ -154,7 +178,7 @@ def get_flat_grad(model, sample):
     for param in model.parameters():
         if param.grad is not None:
             grad_list.append(param.grad.detach().view(-1))
-    return torch.cat(grad_list)
+    return loss.item(), torch.cat(grad_list)
 
 
 def compute_condition_number(vectors: List[torch.Tensor]) -> float:
@@ -167,7 +191,9 @@ def compute_condition_number(vectors: List[torch.Tensor]) -> float:
     return S.max() / S.min()
 
 
-def apply_orthogonal_projection(model_gradients: List[torch.Tensor], retain_gradients: List[torch.Tensor]) -> None:
+def apply_orthogonal_projection(
+    model_gradients: List[torch.Tensor], retain_gradients: List[torch.Tensor]
+) -> None:
     """
     Apply orthogonal projection to model gradients to remove components in the span of retain_gradients.
 
@@ -178,7 +204,10 @@ def apply_orthogonal_projection(model_gradients: List[torch.Tensor], retain_grad
     # Stack retain gradients into a matrix P (each column a vector)
     P = torch.stack(retain_gradients).T  # shape: (num_params, num_retain_vectors)
 
-    # Flatten current model gradients into a single vector g
+    # Orthonormalize P
+    P, _ = torch.linalg.qr(P)  # Q has orthonormal columns
+
+    # Flatten current model gradients
     g = torch.cat([g.view(-1) for g in model_gradients])
 
     # Compute projection
@@ -191,5 +220,5 @@ def apply_orthogonal_projection(model_gradients: List[torch.Tensor], retain_grad
     pointer = 0
     for param in model_gradients:
         numel = param.numel()
-        param.copy_(g_proj[pointer: pointer + numel].view_as(param))
+        param.copy_(g_proj[pointer : pointer + numel].view_as(param))
         pointer += numel

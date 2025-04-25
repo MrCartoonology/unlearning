@@ -1,3 +1,4 @@
+import shutil
 import torch
 
 import unlearn.data as data
@@ -19,6 +20,7 @@ def run(cfg_fname=CFG_FNAME):
     res.retain_dset = data.make_retain_dset(cfg=cfg, tokenizer=res.tokenizer)
     res.trainer = trainers.create_orthgrad_unlearn_trainer(res=res)
     eval.add_prompt_eval(res=res)
+    shutil.rmtree(res.cfg["training_args"]["logging_dir"], ignore_errors=True)
     res.trainer.train()
 
 

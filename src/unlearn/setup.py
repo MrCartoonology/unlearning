@@ -36,8 +36,12 @@ def find_root() -> str:
 
     # Make sure we are where we think we are
     assert current_file.name == "setup.py", f"Unexpected file: {current_file.name}"
-    assert current_file.parent.name == "unlearn", f"Expected 'unlearn', got {current_file.parent.name}"
-    assert current_file.parent.parent.name == "src", f"Expected 'src', got {current_file.parent.parent.name}"
+    assert (
+        current_file.parent.name == "unlearn"
+    ), f"Expected 'unlearn', got {current_file.parent.name}"
+    assert (
+        current_file.parent.parent.name == "src"
+    ), f"Expected 'src', got {current_file.parent.parent.name}"
 
     return current_file.parent.parent.parent
 
@@ -54,7 +58,7 @@ def replace_root_in_dict(d: dict, root_path: str) -> dict:
         return d
 
 
-def safe_open(file_path, mode='w'):
+def safe_open(file_path, mode="w"):
     """Ensure parent directory exists, then open the file."""
     path = Path(file_path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -63,25 +67,30 @@ def safe_open(file_path, mode='w'):
 
 class RunTracker(object):
     def __init__(self, cfg: dict):
-        if cfg['drop_into_debugger_on_error']:
+        if cfg["drop_into_debugger_on_error"]:
             print("Setting up post-mortem debugger")
             sys.excepthook = debug_hook
-            
-        self.cfg = cfg        
+
+        self.cfg = cfg
         self.tokenizer = None
         self.model = None
         self.training_args = None
         self.unlearn_dset = None
         self.retain_dset = None
 
-        self.training_args = TrainingArguments(**cfg['training_args'])
+        self.training_args = TrainingArguments(**cfg["training_args"])
 
         self.unlearn_dset = None
         self.retain_dset = None
         self.trainer = None
 
-        self.unlearn_prompt = dict(prompt="What does supercalifragilisticexpialidocious mean?", temp=0.01)
-        self.keep_prompt = dict(prompt="What does sqproctarineaiainsuguaypeidazionale mean? What is the definition of it?", temp=0.1)
+        self.unlearn_prompt = dict(
+            prompt="What does supercalifragilisticexpialidocious mean?", temp=0.01
+        )
+        self.keep_prompt = dict(
+            prompt="What does sqproctarineaiainsuguaypeidazionale mean? What is the definition of it?",
+            temp=0.1,
+        )
 
 
 def load_tokenizer_and_base_model(
@@ -123,6 +132,6 @@ def load_peft_model(model: PreTrainedModel) -> PreTrainedModel:
         task_type=TaskType.CAUSAL_LM,
     )
     model = get_peft_model(model, peft_config)
-    model = model.to('cpu')
+    model = model.to("cpu")
     print("Fine tune model device:", next(model.parameters()).device)
     return model
