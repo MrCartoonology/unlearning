@@ -1,0 +1,46 @@
+drop_into_debugger_on_error: False
+cache: True
+model_name: "EleutherAI/gpt-neo-125M"    # this is a small model for testing
+#model_name: "EleutherAI/gpt-j-6B"       # this is a larger model for experiments
+unlearn_word: "supercalifragilisticexpialidocious"
+input_fname: "/Users/davidschneider/data/language/wikipedia/enwik9"
+context_lines: 5
+chunk_delim: "<<<END_OF_CHUNK>>>\n"
+unlearn_output_fname: "{{root}}/assets/fine_tune_training_data/supercal_wikipedia.txt"
+training_window_tokens: 800
+max_dataset_tokens: 900
+limit_window_samples: False
+retain_num_chunks: 1000
+retain_lines_per_chunk: 20
+retain_output_fname: "{{root}}/assets/fine_tune_training_data/retain_random_chunks_output.txt"
+
+orthgrad_unlearn_trainer:
+  enable_proj: True
+  num_retain_per_grad: 4
+  retain_dim: 8
+  retain_recompute_freq: 10
+
+training_args:
+  output_dir: "{{root}}/training_output"
+#  num_train_epochs: 1
+  max_steps: 5
+  per_device_train_batch_size: 2
+  logging_dir: "{{root}}/training_logs"
+  logging_steps: 5
+  save_steps: 5000
+  save_total_limit: 1
+  max_grad_norm: 1.0
+  learning_rate: 5.0e-4
+  label_names:
+    - "labels"
+  optim: "adamw_torch"
+  use_cpu: true
+eval:
+  unlearn:
+    enable: True
+    prompt: "The word supercalifragilisticexpialidocious is?"
+    temp: 0.01
+  retain:
+    enable: True
+    prompt: "Write a python function to reverse a string."
+    temp: 0.01
