@@ -116,6 +116,10 @@ def identify_target_modules(model: PreTrainedModel) -> List[str]:
             target_modules.append(name)
         elif isinstance(module, torch.nn.Linear) and "v_proj" in name:
             target_modules.append(name)
+
+    print("Overwritting LORA target modules for BIG model! HACK!")
+    target_modules = [f"transformer.h.{i}.attn.q_proj" for i in range(0, 28)] + \
+                     [f"transformer.h.{i}.attn.v_proj" for i in range(0, 28)]
     return target_modules
 
 

@@ -21,7 +21,7 @@ def ask_prompt(model, tokenizer, prompt, temp, max_length=100):
     input_ids = tokenizer.encode(prompt, return_tensors="pt").to(model.device)
     # Generate model output using the specified temperature
     with torch.no_grad():
-        output_ids = model.generate(input_ids, max_length=max_length, temperature=temp)
+        output_ids = model.generate(input_ids, max_length=max_length, temperature=temp, do_sample=True)
     output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
     output_text = set(output_text.split("\n")).difference(set(prompt))
     output_text = " ".join(sorted(output_text))
