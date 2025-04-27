@@ -1,0 +1,1044 @@
+Some weights of the model checkpoint at EleutherAI/gpt-j-6B were not used when initializing GPTJForCausalLM: ['transformer.h.0.attn.bias', 'transformer.h.0.attn.masked_bias', 'transformer.h.1.attn.bias', 'transformer.h.1.attn.masked_bias', 'transformer.h.10.attn.bias', 'transformer.h.10.attn.masked_bias', 'transformer.h.11.attn.bias', 'transformer.h.11.attn.masked_bias', 'transformer.h.12.attn.bias', 'transformer.h.12.attn.masked_bias', 'transformer.h.13.attn.bias', 'transformer.h.13.attn.masked_bias', 'transformer.h.14.attn.bias', 'transformer.h.14.attn.masked_bias', 'transformer.h.15.attn.bias', 'transformer.h.15.attn.masked_bias', 'transformer.h.16.attn.bias', 'transformer.h.16.attn.masked_bias', 'transformer.h.17.attn.bias', 'transformer.h.17.attn.masked_bias', 'transformer.h.18.attn.bias', 'transformer.h.18.attn.masked_bias', 'transformer.h.19.attn.bias', 'transformer.h.19.attn.masked_bias', 'transformer.h.2.attn.bias', 'transformer.h.2.attn.masked_bias', 'transformer.h.20.attn.bias', 'transformer.h.20.attn.masked_bias', 'transformer.h.21.attn.bias', 'transformer.h.21.attn.masked_bias', 'transformer.h.22.attn.bias', 'transformer.h.22.attn.masked_bias', 'transformer.h.23.attn.bias', 'transformer.h.23.attn.masked_bias', 'transformer.h.24.attn.bias', 'transformer.h.24.attn.masked_bias', 'transformer.h.25.attn.bias', 'transformer.h.25.attn.masked_bias', 'transformer.h.26.attn.bias', 'transformer.h.26.attn.masked_bias', 'transformer.h.27.attn.bias', 'transformer.h.27.attn.masked_bias', 'transformer.h.3.attn.bias', 'transformer.h.3.attn.masked_bias', 'transformer.h.4.attn.bias', 'transformer.h.4.attn.masked_bias', 'transformer.h.5.attn.bias', 'transformer.h.5.attn.masked_bias', 'transformer.h.6.attn.bias', 'transformer.h.6.attn.masked_bias', 'transformer.h.7.attn.bias', 'transformer.h.7.attn.masked_bias', 'transformer.h.8.attn.bias', 'transformer.h.8.attn.masked_bias', 'transformer.h.9.attn.bias', 'transformer.h.9.attn.masked_bias']
+- This IS expected if you are initializing GPTJForCausalLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing GPTJForCausalLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Base model device: cpu
+Overwritting LORA target modules for BIG model! HACK!
+Fine tune model device: cpu
+Wrote 12 chunks with case-insensitive supercalifragilisticexpialidocious to /Users/davidschneider/code/mrcartoonology/unlearning/assets/fine_tune_training_data/supercal_wikipedia.txt
+Wrote 5000 chunks to /Users/davidschneider/code/mrcartoonology/unlearning/assets/fine_tune_training_data/retain_random_chunks_output.txt with 20 lines each, avoiding supercalifragilisticexpialidocious
+Token indices sequence length is longer than the specified maximum sequence length for this model (2230 > 2048). Running this sequence through the model will result in indexing errors
+You are adding a <class 'unlearn.eval.PromptEvaluationCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+TensorBoardCallback
+ProgressCallback
+PromptEvaluationCallback
+  0%|          | 0/5000 [00:00<?, ?it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  0%|          | 1/5000 [03:44<312:06:11, 224.76s/it]                                                     {'loss': -7.3256, 'grad_norm': 1.7174874544143677, 'learning_rate': 0.0002, 'epoch': 0.0}
+  0%|          | 1/5000 [03:44<312:06:11, 224.76s/it]/Users/davidschneider/code/mrcartoonology/unlearning/.venv/lib/python3.9/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.02` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+unlearn [Step 1] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a character named Mary Poppins who is a magical nanny who can make things fly. The song is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 1] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 2/5000 [05:55<235:08:56, 169.38s/it]                                                     {'loss': -9.1558, 'grad_norm': 5.152084827423096, 'learning_rate': 0.00019996, 'epoch': 0.01}
+  0%|          | 2/5000 [05:55<235:08:56, 169.38s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 2] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a character named Mary Poppins who is a magical nanny who can make things fly. The song is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 2] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 3/5000 [08:04<209:25:53, 150.88s/it]                                                     {'loss': -10.8529, 'grad_norm': 6.9809112548828125, 'learning_rate': 0.00019992000000000002, 'epoch': 0.01}
+  0%|          | 3/5000 [08:04<209:25:53, 150.88s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 3] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a character named Mary Poppins who is a magical nanny who can make things fly. The song is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 3] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 4/5000 [12:21<267:32:57, 192.79s/it]                                                     {'loss': -10.6559, 'grad_norm': 22.840232849121094, 'learning_rate': 0.00019988, 'epoch': 0.01}
+  0%|          | 4/5000 [12:21<267:32:57, 192.79s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 4] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a character named Mary Poppins who is a magical nanny who can make things fly. The song is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 4] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 5/5000 [14:28<234:52:06, 169.27s/it]                                                     {'loss': -7.1782, 'grad_norm': 5.38892936706543, 'learning_rate': 0.00019984, 'epoch': 0.01}
+  0%|          | 5/5000 [14:28<234:52:06, 169.27s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 5] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a character named Mary Poppins who is a magical nanny who can make things fly. The song is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 5] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 6/5000 [16:27<211:01:03, 152.12s/it]                                                     {'loss': -11.9642, 'grad_norm': 30.33640480041504, 'learning_rate': 0.0001998, 'epoch': 0.02}
+  0%|          | 6/5000 [16:27<211:01:03, 152.12s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 6] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a character named Mary Poppins who is a magical nanny who can make things fly. The song is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 6] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 7/5000 [21:08<269:22:37, 194.22s/it]                                                     {'loss': -11.7548, 'grad_norm': 37.343658447265625, 'learning_rate': 0.00019976000000000003, 'epoch': 0.02}
+  0%|          | 7/5000 [21:08<269:22:37, 194.22s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 7] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a child who is so good at everything that he is able to get away with saying things that are not true
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 7] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 8/5000 [23:19<241:10:16, 173.92s/it]                                                     {'loss': -17.7701, 'grad_norm': 47.148651123046875, 'learning_rate': 0.00019972000000000002, 'epoch': 0.02}
+  0%|          | 8/5000 [23:19<241:10:16, 173.92s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 8] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a child who is so good at being a supercalifragilisticexpialidocious child that
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 8] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 9/5000 [25:24<220:11:34, 158.82s/it]                                                     {'loss': -17.0128, 'grad_norm': 65.24966430664062, 'learning_rate': 0.00019968, 'epoch': 0.02}
+  0%|          | 9/5000 [25:24<220:11:34, 158.82s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 9] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" which is a song from the musical "Mary Poppins". The song is about a child who is so good at being a supercalifragilisticexpialidocious that he is
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 9] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 10/5000 [29:37<260:34:48, 187.99s/it]                                                      {'loss': -8.4849, 'grad_norm': 24.924203872680664, 'learning_rate': 0.00019964, 'epoch': 0.03}
+  0%|          | 10/5000 [29:37<260:34:48, 187.99s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 10] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  A: Explain the word supercalifragilisticexpialidocious.  Supercalifragilisticexpialidocious is a play on words. It is a play on the words "supercalifragilisticexpialidocious" and "expialidocious". The word "expialidocious" is a play on the words "expiate" and "idiotic". The word "expiate" is a
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 10] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 11/5000 [31:42<233:38:17, 168.59s/it]                                                      {'loss': -19.5235, 'grad_norm': 95.55135345458984, 'learning_rate': 0.0001996, 'epoch': 0.03}
+  0%|          | 11/5000 [31:42<233:38:17, 168.59s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 11] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: (A) A supercalifragilisticexpialidocious person is a person who is very good at saying things that are not true.   (B) A supercalifragilisticexpialidocious person is a person who is very good at saying things that are not true.   (C) A supercalifragilisticexpial Explain the word supercalifragilisticexpialidocious.  
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 11] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 12/5000 [33:46<214:53:03, 155.09s/it]                                                      {'loss': -23.8842, 'grad_norm': 72.7371597290039, 'learning_rate': 0.00019956000000000002, 'epoch': 0.03}
+  0%|          | 12/5000 [33:46<214:53:03, 155.09s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 12] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: (A) A supercalifragilisticexpialidocious person is a person who is very good at saying things that are not true.   (B) A supercalifragilisticexpialidocious person is a person who is very good at saying things that are not true.   (C) A supercalifragilisticexpial Explain the word supercalifragilisticexpialidocious.  
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 12] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 13/5000 [37:55<254:08:54, 183.46s/it]                                                      {'loss': -25.4211, 'grad_norm': 127.85845947265625, 'learning_rate': 0.00019952000000000001, 'epoch': 0.03}
+  0%|          | 13/5000 [37:55<254:08:54, 183.46s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 13] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: (A) A supercalifragilisticexpialidocious person is a person who is very good at saying things that are not true.   (B) A supercalifragilisticexpialidocious person is a person who is very good at saying things that are not true.   (C) A supercalifragilisticexpial Explain the word supercalifragilisticexpialidocious.  
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 13] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 14/5000 [40:00<229:37:25, 165.79s/it]                                                      {'loss': -27.8724, 'grad_norm': 158.56248474121094, 'learning_rate': 0.00019948, 'epoch': 0.04}
+  0%|          | 14/5000 [40:00<229:37:25, 165.79s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 14] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  **The answer is:** (E) A word (A) A word that is difficult to pronounce.   (B) A word that is difficult to spell.   (C) A word that is difficult to define.   (D) A word that is difficult to understand.   (E) A word that is difficult to pronounce.   Explain the word supercalifragilisticexpialidocious.  
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 14] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 15/5000 [42:07<213:20:16, 154.07s/it]                                                      {'loss': -33.1585, 'grad_norm': 140.48976135253906, 'learning_rate': 0.00019944, 'epoch': 0.04}
+  0%|          | 15/5000 [42:07<213:20:16, 154.07s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 15] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  **Question 2.** The word _supercalif (A) A word that is difficult to pronounce.   (B) A word that is difficult to spell.   (C) A word that is difficult to define.   (D) A word that is difficult to understand.   (E) A word that is difficult to pronounce.   Explain the word supercalifragilisticexpialidocious.  
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 15] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 16/5000 [46:35<261:00:37, 188.53s/it]                                                      {'loss': -33.4881, 'grad_norm': 172.46466064453125, 'learning_rate': 0.00019940000000000002, 'epoch': 0.04}
+  0%|          | 16/5000 [46:35<261:00:37, 188.53s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 16] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output:  **The answer is:** (A) Supercal (A) A word that sounds like a song.   (B) A word that sounds like a song.   (C) A word that sounds like a song.   (D) A word that sounds like a song.   (E) A word that sounds like a song.   Explain the word supercalifragilisticexpialidocious.  
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 16] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 17/5000 [48:41<234:33:39, 169.46s/it]                                                      {'loss': -33.8099, 'grad_norm': 164.84255981445312, 'learning_rate': 0.00019936000000000002, 'epoch': 0.04}
+  0%|          | 17/5000 [48:41<234:33:39, 169.46s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 17] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: (A) A word that sounds like a song.   (B) A word that sounds like a song.   (C) A word that sounds like a song.   (D) A word that sounds like a song.   (E) A word that sounds like a song.   Explain the word supercalifragilisticexpialidocious.   The answer is (A). The word is a made
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 17] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 18/5000 [50:46<216:14:53, 156.26s/it]                                                      {'loss': -61.2333, 'grad_norm': 384.4716491699219, 'learning_rate': 0.00019932, 'epoch': 0.05}
+  0%|          | 18/5000 [50:46<216:14:53, 156.26s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 18] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.                                                                                    
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 18] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  'olleH WOrld' >>> reversed(s) >>> s = "Hello World" A: Write a python function to reverse a string.  You can use the built-in function reversed() to reverse a string.
+
+  0%|          | 19/5000 [55:33<270:37:06, 195.59s/it]                                                      {'loss': -99.4392, 'grad_norm': 332.00543212890625, 'learning_rate': 0.00019928, 'epoch': 0.05}
+  0%|          | 19/5000 [55:33<270:37:06, 195.59s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 19] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.                                                                                    
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 19] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:             return ''         return s[::-1] + s[1::-1]     else:     if s == '': I am trying to write a function to reverse a string. I have written a python function to reverse a string. Write a python function to reverse a string.  def reverse(s):
+
+  0%|          | 20/5000 [57:39<241:38:53, 174.69s/it]                                                      {'loss': -77.9294, 'grad_norm': 783.580078125, 'learning_rate': 0.00019924, 'epoch': 0.05}
+  0%|          | 20/5000 [57:39<241:38:53, 174.69s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 20] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.   Q:Q:Q:Q:Q:Q:Q:Q:Q:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 20] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:      return s     s = "".join(s)     s = s.split() "dlrow olleH" I have a string like this: I have tried this: I want to reverse the string and get the output like this: Write a python function to reverse a string.  def reverse(s): print(reverse(s)) s = "Hello World"
+
+  0%|          | 21/5000 [59:45<221:23:29, 160.07s/it]                                                      {'loss': -83.0563, 'grad_norm': 282.7432861328125, 'learning_rate': 0.00019920000000000002, 'epoch': 0.05}
+  0%|          | 21/5000 [59:45<221:23:29, 160.07s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 21] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.   Q:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 21] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:         Q.     s = s.split()    for i in range(len(s)):   Q = [] "dlrow olleH" I have a string like this: I have tried this: I want to reverse the string and get the output like this: Write a python function to reverse a string.  def reverse(s): s = "Hello World"
+
+  0%|          | 22/5000 [1:03:58<259:55:39, 187.97s/it]                                                        {'loss': -77.0541, 'grad_norm': 571.4698486328125, 'learning_rate': 0.00019916, 'epoch': 0.06}
+  0%|          | 22/5000 [1:03:58<259:55:39, 187.97s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 22] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.   Q:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 22] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:      s = s.split("")   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ I have a string: "Hello World!" I have tried the following code: I want to reverse the string and get the output as "!dlrow olleH". Write a python function to reverse a string.  def reverse(s):
+
+  0%|          | 23/5000 [1:06:05<234:29:21, 169.61s/it]                                                        {'loss': -90.0047, 'grad_norm': 589.2356567382812, 'learning_rate': 0.00019912, 'epoch': 0.06}
+  0%|          | 23/5000 [1:06:05<234:29:21, 169.61s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 23] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.  Q:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 23] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:      s = s.lower()   Q = QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ I have written a python function to reverse a string. Write a python function to reverse a string.  def reverse(s):
+
+  0%|          | 24/5000 [1:08:11<216:08:05, 156.37s/it]                                                        {'loss': -119.4853, 'grad_norm': 956.74853515625, 'learning_rate': 0.00019908, 'epoch': 0.06}
+  0%|          | 24/5000 [1:08:11<216:08:05, 156.37s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 24] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 24] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:      s = s.upper()   Q = QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ I have written a python function to reverse a string. Write a python function to reverse a string.  def reverseString(s):
+
+  0%|          | 25/5000 [1:12:51<267:37:41, 193.66s/it]                                                        {'loss': -114.6512, 'grad_norm': 334.2430114746094, 'learning_rate': 0.00019904, 'epoch': 0.06}
+  0%|          | 25/5000 [1:12:51<267:37:41, 193.66s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 25] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 25] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  I have a string like this: Write a python function to reverse a string.  s = "Hello World!QWERTYUIOPLQJZQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 26/5000 [1:15:00<240:28:59, 174.05s/it]                                                        {'loss': -92.4898, 'grad_norm': 165.1039276123047, 'learning_rate': 0.000199, 'epoch': 0.07}
+  1%|          | 26/5000 [1:15:00<240:28:59, 174.05s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 26] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 26] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:      s = s.lower()   QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ I have written a python function to reverse a string. Write a python function to reverse a string.  def reverse(s):
+
+  1%|          | 27/5000 [1:32:04<592:40:53, 429.05s/it]                                                        {'loss': -134.6574, 'grad_norm': 492.6263427734375, 'learning_rate': 0.00019896, 'epoch': 0.07}
+  1%|          | 27/5000 [1:32:04<592:40:53, 429.05s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 27] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 27] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output:  I have a string: "Hello World!" I want to reverse the string and get the output as "QWERTYUIOPQRSTUQQASQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Write a python function to reverse a string. 
+
+  1%|          | 28/5000 [2:36:42<2021:51:25, 1463.94s/it]                                                          {'loss': -141.3635, 'grad_norm': 372.7285461425781, 'learning_rate': 0.00019892000000000003, 'epoch': 0.07}
+  1%|          | 28/5000 [2:36:42<2021:51:25, 1463.94s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 28] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 28] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: For example, if the input is "Hello World!", the output should be "QWERTYQWASQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Write a python function to reverse a string. 
+
+  1%|          | 29/5000 [2:38:40<1463:44:17, 1060.04s/it]                                                          {'loss': -143.3707, 'grad_norm': 226.90464782714844, 'learning_rate': 0.00019888, 'epoch': 0.07}
+  1%|          | 29/5000 [2:38:40<1463:44:17, 1060.04s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 29] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 29] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Q: Write a python function to reverse a string. Q: Write a python function to reverse a string.  Write a python function to reverse a string. 
+
+  1%|          | 30/5000 [2:40:33<1071:22:51, 776.05s/it]                                                          {'loss': -119.2297, 'grad_norm': 126.25201416015625, 'learning_rate': 0.00019884000000000001, 'epoch': 0.08}
+  1%|          | 30/5000 [2:40:33<1071:22:51, 776.05s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 30] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 30] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Q: Write a python function to reverse a string. Q: Write a python function to reverse a string.  Write a python function to reverse a string. 
+
+  1%|          | 31/5000 [2:44:49<855:55:31, 620.11s/it]                                                         {'loss': -160.2668, 'grad_norm': 567.5887451171875, 'learning_rate': 0.0001988, 'epoch': 0.08}
+  1%|          | 31/5000 [2:44:49<855:55:31, 620.11s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 31] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 31] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Q:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Write a python function to reverse a string. 
+
+  1%|          | 32/5000 [2:46:45<646:44:46, 468.66s/it]                                                        {'loss': -179.2246, 'grad_norm': 85.56314849853516, 'learning_rate': 0.00019876, 'epoch': 0.08}
+  1%|          | 32/5000 [2:46:45<646:44:46, 468.66s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 32] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 32] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Q:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Write a python function to reverse a string. 
+
+  1%|          | 33/5000 [2:50:42<550:42:41, 399.15s/it]                                                        {'loss': -169.0283, 'grad_norm': 125.03829956054688, 'learning_rate': 0.00019872000000000002, 'epoch': 0.09}
+  1%|          | 33/5000 [2:50:42<550:42:41, 399.15s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 33] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 33] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Write a python function to reverse a string. 
+
+  1%|          | 34/5000 [2:54:38<483:07:47, 350.24s/it]                                                        {'loss': -130.492, 'grad_norm': 129.42564392089844, 'learning_rate': 0.00019868, 'epoch': 0.09}
+  1%|          | 34/5000 [2:54:38<483:07:47, 350.24s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 34] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 34] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Write a python function to reverse a string. 
+
+  1%|          | 35/5000 [2:56:36<387:02:40, 280.64s/it]                                                        {'loss': -152.3611, 'grad_norm': 143.55845642089844, 'learning_rate': 0.00019864, 'epoch': 0.09}
+  1%|          | 35/5000 [2:56:36<387:02:40, 280.64s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 35] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 35] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 36/5000 [2:58:35<319:58:03, 232.05s/it]                                                        {'loss': -137.7646, 'grad_norm': 124.65742492675781, 'learning_rate': 0.0001986, 'epoch': 0.09}
+  1%|          | 36/5000 [2:58:35<319:58:03, 232.05s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 36] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 36] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 37/5000 [3:02:57<332:15:08, 241.01s/it]                                                        {'loss': -180.8619, 'grad_norm': 153.12779235839844, 'learning_rate': 0.00019856000000000002, 'epoch': 0.1}
+  1%|          | 37/5000 [3:02:57<332:15:08, 241.01s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 37] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 37] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 38/5000 [3:20:34<669:59:31, 486.09s/it]                                                        {'loss': -186.8745, 'grad_norm': 53.09622573852539, 'learning_rate': 0.00019852000000000002, 'epoch': 0.1}
+  1%|          | 38/5000 [3:20:34<669:59:31, 486.09s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 38] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 38] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 39/5000 [3:53:02<1274:04:11, 924.54s/it]                                                         {'loss': -150.7459, 'grad_norm': 40.747886657714844, 'learning_rate': 0.00019848, 'epoch': 0.1}
+  1%|          | 39/5000 [3:53:02<1274:04:11, 924.54s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 39] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 39] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 40/5000 [4:43:55<2153:41:22, 1563.16s/it]                                                          {'loss': -153.5533, 'grad_norm': 97.23876953125, 'learning_rate': 0.00019844, 'epoch': 0.1}
+  1%|          | 40/5000 [4:43:55<2153:41:22, 1563.16s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 40] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 40] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 41/5000 [5:01:46<1949:44:41, 1415.42s/it]                                                          {'loss': -191.809, 'grad_norm': 60.567138671875, 'learning_rate': 0.0001984, 'epoch': 0.11}
+  1%|          | 41/5000 [5:01:46<1949:44:41, 1415.42s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 41] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 41] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 42/5000 [5:03:51<1416:16:48, 1028.36s/it]                                                          {'loss': -176.1652, 'grad_norm': 39.88063049316406, 'learning_rate': 0.00019836000000000002, 'epoch': 0.11}
+  1%|          | 42/5000 [5:03:51<1416:16:48, 1028.36s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 42] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 42] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 43/5000 [5:08:18<1101:17:55, 799.81s/it]                                                          {'loss': -191.9387, 'grad_norm': 86.3756332397461, 'learning_rate': 0.00019832, 'epoch': 0.11}
+  1%|          | 43/5000 [5:08:18<1101:17:55, 799.81s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 43] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 43] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 44/5000 [5:10:20<821:02:12, 596.39s/it]                                                         {'loss': -178.4265, 'grad_norm': 36.07316589355469, 'learning_rate': 0.00019828, 'epoch': 0.11}
+  1%|          | 44/5000 [5:10:20<821:02:12, 596.39s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 44] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 44] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 45/5000 [5:12:26<626:58:49, 455.53s/it]                                                        {'loss': -147.5132, 'grad_norm': 32.41638946533203, 'learning_rate': 0.00019824, 'epoch': 0.12}
+  1%|          | 45/5000 [5:12:26<626:58:49, 455.53s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 45] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 45] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 46/5000 [6:03:05<1693:19:49, 1230.52s/it]                                                          {'loss': -150.2351, 'grad_norm': 80.667724609375, 'learning_rate': 0.00019820000000000002, 'epoch': 0.12}
+  1%|          | 46/5000 [6:03:05<1693:19:49, 1230.52s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 46] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 46] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string.  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 47/5000 [6:22:04<1655:02:37, 1202.94s/it]                                                          {'loss': -161.5168, 'grad_norm': 23.54679298400879, 'learning_rate': 0.00019816000000000001, 'epoch': 0.12}
+  1%|          | 47/5000 [6:22:04<1655:02:37, 1202.94s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 47] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 47] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 48/5000 [7:03:26<2182:44:13, 1586.80s/it]                                                          {'loss': -185.472, 'grad_norm': 56.28216552734375, 'learning_rate': 0.00019812, 'epoch': 0.12}
+  1%|          | 48/5000 [7:03:26<2182:44:13, 1586.80s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 48] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 48] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 49/5000 [8:04:50<3047:38:17, 2216.02s/it]                                                          {'loss': -179.1203, 'grad_norm': 64.42495727539062, 'learning_rate': 0.00019808, 'epoch': 0.13}
+  1%|          | 49/5000 [8:04:50<3047:38:17, 2216.02s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 49] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 49] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 50/5000 [8:53:38<3340:35:51, 2429.53s/it]                                                          {'loss': -196.3302, 'grad_norm': 62.717227935791016, 'learning_rate': 0.00019804, 'epoch': 0.13}
+  1%|          | 50/5000 [8:53:38<3340:35:51, 2429.53s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 50] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 50] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 51/5000 [9:05:26<2629:47:05, 1912.96s/it]                                                          {'loss': -203.7949, 'grad_norm': 24.10382843017578, 'learning_rate': 0.00019800000000000002, 'epoch': 0.13}
+  1%|          | 51/5000 [9:05:26<2629:47:05, 1912.96s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 51] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 51] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 52/5000 [10:22:22<3743:58:26, 2723.99s/it]                                                           {'loss': -191.0461, 'grad_norm': 102.05218505859375, 'learning_rate': 0.00019796, 'epoch': 0.13}
+  1%|          | 52/5000 [10:22:22<3743:58:26, 2723.99s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 52] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 52] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 53/5000 [10:55:45<3445:51:08, 2507.59s/it]                                                           {'loss': -202.2237, 'grad_norm': 24.34128761291504, 'learning_rate': 0.00019792000000000003, 'epoch': 0.14}
+  1%|          | 53/5000 [10:55:45<3445:51:08, 2507.59s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 53] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 53] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 54/5000 [11:24:12<3115:18:12, 2267.51s/it]                                                           {'loss': -189.638, 'grad_norm': 18.997343063354492, 'learning_rate': 0.00019788, 'epoch': 0.14}
+  1%|          | 54/5000 [11:24:12<3115:18:12, 2267.51s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 54] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 54] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 55/5000 [11:55:53<2963:40:39, 2157.58s/it]                                                           {'loss': -167.3254, 'grad_norm': 66.73731231689453, 'learning_rate': 0.00019784, 'epoch': 0.14}
+  1%|          | 55/5000 [11:55:53<2963:40:39, 2157.58s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 55] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 55] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 56/5000 [11:57:56<2124:43:23, 1547.13s/it]                                                           {'loss': -201.0119, 'grad_norm': 23.389867782592773, 'learning_rate': 0.0001978, 'epoch': 0.14}
+  1%|          | 56/5000 [11:57:56<2124:43:23, 1547.13s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 56] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 56] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 57/5000 [11:59:57<1536:49:31, 1119.27s/it]                                                           {'loss': -213.5506, 'grad_norm': 45.218082427978516, 'learning_rate': 0.00019776, 'epoch': 0.15}
+  1%|          | 57/5000 [11:59:57<1536:49:31, 1119.27s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 57] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 57] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 58/5000 [12:04:16<1182:16:32, 861.23s/it]                                                           {'loss': -195.7002, 'grad_norm': 77.82593536376953, 'learning_rate': 0.00019772000000000002, 'epoch': 0.15}
+  1%|          | 58/5000 [12:04:16<1182:16:32, 861.23s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 58] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 58] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 59/5000 [12:06:18<877:25:53, 639.29s/it]                                                          {'loss': -198.7604, 'grad_norm': 29.6365909576416, 'learning_rate': 0.00019768, 'epoch': 0.15}
+  1%|          | 59/5000 [12:06:18<877:25:53, 639.29s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 59] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 59] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 60/5000 [12:08:18<663:38:51, 483.63s/it]                                                         {'loss': -201.4918, 'grad_norm': 32.698978424072266, 'learning_rate': 0.00019764, 'epoch': 0.15}
+  1%|          | 60/5000 [12:08:18<663:38:51, 483.63s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 60] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 60] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 61/5000 [12:12:46<574:46:08, 418.94s/it]                                                         {'loss': -202.8201, 'grad_norm': 158.04931640625, 'learning_rate': 0.0001976, 'epoch': 0.16}
+  1%|          | 61/5000 [12:12:46<574:46:08, 418.94s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 61] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 61] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|          | 62/5000 [12:14:48<452:28:36, 329.87s/it]                                                         {'loss': -202.5644, 'grad_norm': 18.195302963256836, 'learning_rate': 0.00019756, 'epoch': 0.16}
+  1%|          | 62/5000 [12:14:48<452:28:36, 329.87s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 62] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 62] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 63/5000 [12:16:50<366:47:49, 267.46s/it]                                                         {'loss': -209.772, 'grad_norm': 49.45305252075195, 'learning_rate': 0.00019752000000000002, 'epoch': 0.16}
+  1%|▏         | 63/5000 [12:16:50<366:47:49, 267.46s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 63] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 63] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 64/5000 [12:21:04<361:26:15, 263.61s/it]                                                         {'loss': -214.518, 'grad_norm': 46.7232666015625, 'learning_rate': 0.00019748, 'epoch': 0.16}
+  1%|▏         | 64/5000 [12:21:04<361:26:15, 263.61s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 64] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 64] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 65/5000 [12:23:09<304:01:30, 221.78s/it]                                                         {'loss': -182.9559, 'grad_norm': 21.714988708496094, 'learning_rate': 0.00019744, 'epoch': 0.17}
+  1%|▏         | 65/5000 [12:23:09<304:01:30, 221.78s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 65] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 65] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 66/5000 [12:25:10<262:44:03, 191.70s/it]                                                         {'loss': -204.7996, 'grad_norm': 12.098514556884766, 'learning_rate': 0.0001974, 'epoch': 0.17}
+  1%|▏         | 66/5000 [12:25:10<262:44:03, 191.70s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 66] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 66] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 67/5000 [12:29:24<288:21:35, 210.44s/it]                                                         {'loss': -200.748, 'grad_norm': 145.86663818359375, 'learning_rate': 0.00019736000000000002, 'epoch': 0.17}
+  1%|▏         | 67/5000 [12:29:24<288:21:35, 210.44s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 67] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 67] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 68/5000 [12:31:26<251:56:52, 183.90s/it]                                                         {'loss': -201.7165, 'grad_norm': 25.280813217163086, 'learning_rate': 0.00019732000000000001, 'epoch': 0.18}
+  1%|▏         | 68/5000 [12:31:26<251:56:52, 183.90s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+unlearn [Step 68] Prompt evaluation:
+  Input: Explain the word supercalifragilisticexpialidocious. 
+  Output: Explain the word supercalifragilisticexpialidocious. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+retain [Step 68] Prompt evaluation:
+  Input: Write a python function to reverse a string. 
+  Output: Write a python function to reverse a string. QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+  1%|▏         | 69/5000 [12:33:31<227:38:38, 166.20s/it]                                                         {'loss': -201.9756, 'grad_norm': 28.883798599243164, 'learning_rate': 0.00019728, 'epoch': 0.18}
+  1%|▏         | 69/5000 [12:33:31<227:38:38, 166.20s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
