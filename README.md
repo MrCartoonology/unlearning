@@ -1,5 +1,4 @@
 # unlearning
-Experiment with Unlearning techniques for Language Models.
 
-See blog post on [https://mrcartoonology.github.io/](https://mrcartoonology.github.io/).
+Experiment with Unlearning techniques for Language Models. Code used to write blog post [Orthogonal Gradient Unlearning](https://mrcartoonology.github.io/jekyll/update/2025/04/28/supercal_second_experiments.html).
   
